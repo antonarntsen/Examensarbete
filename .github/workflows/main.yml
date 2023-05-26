@@ -3,7 +3,7 @@ name: Docker build and deploy
 on:
   push:
     branches:
-      - 1-python-script-to-call-api
+      - main
 
 jobs:
   build-and-push:
