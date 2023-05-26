@@ -48,4 +48,4 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         script: |
           docker pull rend2/x1:latest
-          docker run -d --name rend2/x1 rend2/x1:latest
+          docker run -d --name container rend2/x1:latest
