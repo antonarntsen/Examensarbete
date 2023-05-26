@@ -20,14 +20,21 @@
                 <input type="text" class="form-control searchBox-input js-searchBox-input" placeholder="Search" id="city" name="city" required>
             </div>
         <div class="searchBox-clearWrapper">
+            <script>"test.js"</script>
             <span class="searchBox-clear js-clearSearchBox"><i class="fa fa-times-circle"></i></span>
             </div>
         </div>
     </form>
     {% if city %}
+        <div class="city">
         <h2>{{ city }}</h2>
+        </div>
+        <div class="weather-condition">
         <p>{{ condition }}, {{ temperature }}°C</p>
-        <p>{{ wind }}</p>
+        </div>
+        <div class="wind-speed">
+        <p>Wind: {{ wind }} km/h</p>
+        </div>
     {% endif %}
 </body>
 </html>

@@ -40,7 +40,7 @@ def index():
         elif "cloudy" in condition.lower() or "overcast" in condition.lower():
             cloudy = "#BFB49D"
             #icon = "https://freepngimg.com/download/weather/23527-3-weather.png"
-            title = "It might be a little windy."
+            title = "The shade feels nice."
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=cloudy, title=title, icon=icon, wind=wind)
         elif "rain" in condition.lower():
             rain = "#2c3c4d"

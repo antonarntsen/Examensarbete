@@ -19,9 +19,8 @@ h1 {
 }
 h2 {
 	color: #FFF;
-}
-p {
-	color: #FFF;
+   position:relative; top:-70px; left:34px;
+   font-size:x-large;
 }
 img {
 	color: #FFF;
@@ -77,4 +76,14 @@ img {
 }
 .searchBox-clearInput:hover {
 	color: #AAA;
+}
+.weather-condition{
+   color: #FFF;
+   position:relative; top:-50px; left:-70px;
+   font-size:large;
+}
+.wind-speed{
+   color: #FFF;
+   position:relative; top:-30px; left:-163px;
+   font-size:large;
 }
