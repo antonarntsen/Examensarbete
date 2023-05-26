@@ -27,7 +27,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: your-dockerhub-username/your-image-name:latest
+        tags: rend2/x1:latest
 
   deploy:
     needs: build-and-push
@@ -41,7 +41,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.REMOTE_SSH_KEY }}
         script: |
-          docker pull your-dockerhub-username/your-image-name:latest
-          docker stop your-container-name
-          docker rm your-container-name
-          docker run -d --name your-container-name your-dockerhub-username/your-image-name:latest
+          docker pull rend2/x1:latest
+          docker run -d --name rend2/x1 rend2/x1:latest
