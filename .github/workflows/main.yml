@@ -49,4 +49,4 @@ jobs:
         script: |
           echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
           docker pull rend2/x1:latest
-          docker run -d --name container rend2/x1:latest
+          docker run -d -p 5000:5000 --name container rend2/x1:latest
