@@ -9,6 +9,6 @@ cbtn.addEventListener("click", function () {
   cbtn.classList.remove("active");
   btn.classList.remove("active");
 
-  const getValue = document.getElementById("bajs");
+  const getValue = document.getElementById("city");
   if (getValue.value != "") getValue.value = "";
 });
