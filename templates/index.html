@@ -1,40 +1,61 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<html>
-<head>
-    <title>Weather App</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <style>
-        body {
+      body {
             background: {{color}};
         }
     </style>
-</head>
-<body>
-    <form action="/" method="post">
-        <div class="weather-icon">
-            <img src="{{ icon }}"/>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="content">
+          <div class="weather-icon">
+            <img src="{{ icon }}" />
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="content">
+          {% if city %}
+          <div class="city">
+            <h2>{{ city }}</h2>
+          </div>
+          <div class="weather-condition">
+            <p>{{ condition }}, {{ temperature }}°C</p>
+          </div>
+          <div class="wind-speed">
+            <p>Wind: {{ wind }} km/h</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="bar">
         <h1>{{ title }}</h1>
+        <div class="search">
+          <form action="/" method="post">
+            <input
+              type="text"
+              id="city"
+              name="city"
+              class="btn"
+              placeholder="Search your town.."
+            />
+          </form>
+          <i class="closeBtn fa-regular fa-circle-xmark"></i>
         </div>
-        <div class="searchBox-fakeInput">
-            <div class="searchBox-inputWrapper">
-                <input type="text" class="form-control searchBox-input js-searchBox-input" placeholder="Search" id="city" name="city" required>
-            </div>
-        <div class="searchBox-clearWrapper">
-            <script>"test.js"</script>
-            <span class="searchBox-clear js-clearSearchBox"><i class="fa fa-times-circle"></i></span>
-            </div>
-        </div>
-    </form>
-    {% if city %}
-        <div class="city">
-        <h2>{{ city }}</h2>
-        </div>
-        <div class="weather-condition">
-        <p>{{ condition }}, {{ temperature }}°C</p>
-        </div>
-        <div class="wind-speed">
-        <p>Wind: {{ wind }} km/h</p>
-        </div>
-    {% endif %}
-</body>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='css/main.js') }}"></script>
+  </body>
 </html>
