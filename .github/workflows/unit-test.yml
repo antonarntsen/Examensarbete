@@ -2,7 +2,7 @@ name: Python application unittest
 
 on:
   push:
-    branches: unit-tests
+    branches: main
 
 jobs:
   build:
