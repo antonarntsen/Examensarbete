@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from waitress import serve
 import requests
 import sys
 
@@ -62,4 +61,4 @@ def index():
     return render_template('index.html', color="#71b5f5", title="How is the weather today?")
 
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=5000)
+    app.run()
