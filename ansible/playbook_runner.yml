@@ -1,0 +1,48 @@
+---
+- hosts: all
+  become: yes
+  vars_prompt:
+    - name: "token"
+      prompt: "Please enter the runner token"
+      private: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - jq
+        - git
+
+    - name: Download GitHub Actions Runner
+      get_url:
+        url: "https://github.com/actions/runner/releases/download/v2.304.0/actions-runner-linux-x64-2.304.0.tar.gz"
+        dest: "/tmp/actions-runner-linux-x64-2.304.0.tar.gz"
+        mode: '0755'
+    
+    - name: Create runner directory
+      file:
+        path: "/home/runner"
+        state: directory
+
+    - name: Unarchive runner package
+      unarchive:
+        src: "/tmp/actions-runner-linux-x64-2.304.0.tar.gz"
+        dest: "/home/runner"
+        remote_src: yes
+
+    - name: Run configuration script
+      become: no
+      shell: ./config.sh --url https://github.com/antonarntsen/Examensarbete --token {{ token }} --unattended
+      args:
+        chdir: /home/runner
+
+    - name: Run service
+      shell: ./run.sh
+      args:
+        chdir: /home/runner
