@@ -21,5 +21,6 @@ jobs:
         pip install -r requirements.txt
         pip install requests_mock
         pip install pytest
+        pip install pytest-mock
     - name: Run tests
       run: PYTHONPATH=. pytest tests
