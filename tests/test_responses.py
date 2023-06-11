@@ -1,6 +1,12 @@
 import pytest
-import requests
+from app import app
 
-def test_api_responsive():
-    response = requests.get('http://api.weatherapi.com/v1/current.json', params={"key": "689649eb6e934beaa8591200230805", "q": "Stockholm", "aqi": "no"})
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_get_weather(client):
+    response = client.get('/')
     assert response.status_code == 200
