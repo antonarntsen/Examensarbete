@@ -128,7 +128,7 @@ def test_rainy_weather():
     with patch('app.get_weather', return_value=sample_weather_rainy):
         with app.test_client() as client:
             resp = client.post('/', data={'city': 'fake_city'})
-            assert b"Grab an umbrella!" in resp.data
+            assert b"Gra an umbrella!" in resp.data
 
 def test_overcast_weather():
     with patch('app.get_weather', return_value=sample_weather_overcast):
