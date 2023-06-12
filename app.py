@@ -35,7 +35,7 @@ def index():
         icon = weather_data["current"]["condition"]["icon"]
         if "sunny" in condition.lower() and current_temp >= 10:
             sunny = '#FD9635'
-            title = "Use unscreen, dummy!"
+            title = "Use sunscreen, dummy!"
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=sunny, title=title, icon=icon, wind=wind)
         elif "cloudy" in condition.lower() or "overcast" in condition.lower():
             cloudy = "#BFB49D"
