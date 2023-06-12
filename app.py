@@ -46,6 +46,7 @@ def index():
             title = "Grab an umbrella!"
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=rain, title=title, icon=icon, wind=wind)
         elif current_temp <= 5:
+            rain = "#2c3c4d"
             title = "Put on a jacket!"
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=rain, title=title, icon=icon, wind=wind)
         elif current_temp <= -5:
