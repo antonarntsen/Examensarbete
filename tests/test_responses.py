@@ -73,10 +73,21 @@ sample_weather_overcast = {
 
 sample_weather_cold = {
     "current": {
-        "temp_c": -6,
+        "temp_c": 4,
         "condition": {
             "text": "Clear",
             "icon": "cold_icon"
+        },
+        "wind_kph": 10
+    }
+}
+
+sample_weather_very_cold = {
+    "current": {
+        "temp_c": -6,
+        "condition": {
+            "text": "Clear",
+            "icon": "very_cold_icon"
         },
         "wind_kph": 10
     }
@@ -127,6 +138,12 @@ def test_overcast_weather():
 
 def test_cold_weather():
     with patch('app.get_weather', return_value=sample_weather_cold):
+        with app.test_client() as client:
+            resp = client.post('/', data={'city': 'fake_city'})
+            assert b"Put on a jacket!" in resp.data
+
+def test_very_cold_weather():
+    with patch('app.get_weather', return_value=sample_weather_very_cold):
         with app.test_client() as client:
             resp = client.post('/', data={'city': 'fake_city'})
             assert b"It's really cold out there." in resp.data
