@@ -39,7 +39,7 @@ def index():
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=sunny, title=title, icon=icon, wind=wind)
         elif "cloudy" in condition.lower() or "overcast" in condition.lower():
             cloudy = "#BFB49D"
-            title = "The shade feels nice."
+            title = "The shade feel nice."
             return render_template('index.html', city=city, condition=condition, temperature=current_temp, color=cloudy, title=title, icon=icon, wind=wind)
         elif "rain" in condition.lower():
             rain = "#2c3c4d"
