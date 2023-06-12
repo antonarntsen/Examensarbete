@@ -146,6 +146,7 @@ def test_very_cold_weather():
     with patch('app.get_weather', return_value=sample_weather_very_cold):
         with app.test_client() as client:
             resp = client.post('/', data={'city': 'fake_city'})
+            print(resp.data)
             assert b"It's really cold out there." in resp.data
 
 def test_mist_weather():
